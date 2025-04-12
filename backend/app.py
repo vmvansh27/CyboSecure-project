@@ -5,6 +5,7 @@ import matplotlib
 matplotlib.use('Agg')  # Use the non-GUI backend for generating plots
 import io
 import os
+from waitress import serve  # Import waitress
 
 app = Flask(__name__)
 
@@ -95,4 +96,5 @@ def generate_report():
     return response
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Use Waitress to serve the app
+    serve(app, host='0.0.0.0', port=5000)
