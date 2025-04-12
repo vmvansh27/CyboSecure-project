@@ -1,0 +1,278 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Cybosecure Networks - Cyber Risk Assessment</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Cybosecure Networks Pvt Ltd</h1>
+    <h2>Cyber Risk Assessment Form</h2>
+    <form action="/generate_report" method="post">
+      <label>Client Name:</label>
+      <input type="text" name="client_name" required />
+
+      <h3>Technical Controls</h3>
+
+      <label>Do you have a firewall?</label>
+      <select name="firewall">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <label>Is patch management automated?</label>
+      <select name="patch">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Manual</option>
+      </select>
+
+      <label>Do you use 2FA?</label>
+      <select name="twofa">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <h3>Governance & Compliance</h3>
+
+      <label>Do you retain logs for at least 180 days (CERT-IN)?</label>
+      <select name="logs">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <label>Do you follow CERT-IN's 6-hour incident reporting?</label>
+      <select name="incidents">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <label>Have you conducted a DPIA under DPDPA?</label>
+      <select name="dpia">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <label>Is user data stored in Indian data centers?</label>
+      <select name="data_location">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <label>Do you have a Cyber Crisis Management Plan (CCMP)?</label>
+      <select name="ccmp">
+        <option>Yes</option>
+        <option>No</option>
+        <option>Partial</option>
+      </select>
+
+      <input type="submit" value="Generate Report" />
+    </form>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybosecure Networks - Cyber Risk Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class", // Enable class-based dark mode
+      };
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = localStorage.getItem("theme");
+        const icon = document.getElementById("theme-icon");
+
+        if (currentTheme === "dark") {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          icon.classList.replace("fa-moon", "fa-sun"); // Switch icon to sun
+        } else {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          icon.classList.replace("fa-sun", "fa-moon"); // Switch icon to moon
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        const icon = document.getElementById("theme-icon");
+        if (savedTheme === "dark") {
+          document.documentElement.classList.add("dark");
+          icon.classList.replace("fa-sun", "fa-moon");
+        } else {
+          icon.classList.replace("fa-moon", "fa-sun");
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-green-600 dark:text-green-500">
+          Cybosecure Networks Pvt Ltd
+        </h1>
+        <button
+          onclick="toggleTheme()"
+          class="w-12 h-12 flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-full shadow-md"
+        >
+          <i
+            id="theme-icon"
+            class="fa-solid fa-moon text-2xl text-black dark:text-white"
+          ></i>
+        </button>
+      </div>
+      <h2 class="text-xl mt-10 text-green-600 dark:text-green-500 font-bold">
+        Cyber Risk Assessment Form
+      </h2>
+      <form
+        action="/generate_report"
+        method="post"
+        class="bg-zinc-200 dark:bg-gray-800 p-6 rounded-md shadow-md"
+      >
+        <!-- Client Name -->
+        <label class="block mt-4">
+          Client Name:
+          <input
+            type="text"
+            name="client_name"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            required
+          />
+        </label>
+
+        <!-- Technical Controls -->
+        <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
+          Technical Controls
+        </h3>
+
+        <label class="block mt-4">
+          Do you have a firewall?
+          <select
+            name="firewall"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Is patch management automated?
+          <select
+            name="patch"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Manual</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Do you use 2FA?
+          <select
+            name="twofa"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <!-- Governance & Compliance -->
+        <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
+          Governance & Compliance
+        </h3>
+
+        <label class="block mt-4">
+          Do you retain logs for at least 180 days (CERT-IN)?
+          <select
+            name="logs"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Do you follow CERT-IN's 6-hour incident reporting?
+          <select
+            name="incidents"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Have you conducted a DPIA under DPDPA?
+          <select
+            name="dpia"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Is user data stored in Indian data centers?
+          <select
+            name="data_location"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Do you have a Cyber Crisis Management Plan (CCMP)?
+          <select
+            name="ccmp"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+            <option>Partial</option>
+          </select>
+        </label>
+
+        <!-- Submit Button -->
+        <input
+          type="submit"
+          value="Generate Report"
+          class="mt-10 bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
+        />
+      </form>
+    </div>
+  </body>
+</html>
