@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cybosecure Networks - Cyber Risk Assessment</title>
+    <title>Cybosecure Networks - Industry Assessment</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -42,30 +41,37 @@
           icon.classList.replace("fa-moon", "fa-sun");
         }
       });
+
+      function showQuestions(industry) {
+        const sections = document.querySelectorAll(".industry-section");
+        sections.forEach((section) => section.classList.add("hidden"));
+
+        const selectedSection = document.getElementById(`${industry}-section`);
+        if (selectedSection) selectedSection.classList.remove("hidden");
+      }
     </script>
   </head>
+
   <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <div class="container mx-auto px-4 py-8">
-      <!-- Header with logo -->
+      <!-- Header -->
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <!-- <img src="../assets/logo.png" alt="Logo" class="w-12 h-12 mr-3" /> -->
           <img
             src="{{ url_for('static', filename='logo1.png') }}"
             alt="Logo"
             class="w-30 h-15 mr-3"
           />
-
           <h1
             class="text-2xl font-bold text-green-600 dark:text-green-500 px-10"
           >
             Cybosecure Networks Pvt Ltd
           </h1>
         </div>
-        <button
+        <!-- <button
           onclick="toggleTheme()"
           class="w-12 h-12 flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-full shadow-md"
-        >
+        > -->
           <i
             id="theme-icon"
             class="fa-solid fa-moon text-2xl text-black dark:text-white"
@@ -73,8 +79,9 @@
         </button>
       </div>
 
+      <!-- Title -->
       <h2 class="text-xl mt-10 text-green-600 dark:text-green-500 font-bold">
-        Cyber Risk Assessment Form
+        Industry-Specific Cyber Assessment
       </h2>
 
       <form
@@ -93,11 +100,223 @@
           />
         </label>
 
+        <!-- Industry Selection -->
+        <label class="block mt-6">
+          Select Industry:
+          <select
+            name="industry"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            onchange="showQuestions(this.value)"
+            required
+          >
+            <option value="">-- Choose Industry --</option>
+            <option value="core">Core (All Industries)</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="bfsi">BFSI</option>
+            <option value="insurance">Insurance</option>
+            <option value="retail">Trading & Retail</option>
+            <option value="it">IT / SaaS</option>
+            <option value="healthcare">Healthcare</option>
+          </select>
+        </label>
+
+        <!-- Industry-specific Questions -->
+        <div id="core-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">Core (All Industries)</h3>
+          <div class="space-y-4 mt-4">
+            <label
+              >2FA enforced for all apps?
+              <select name="core_2fa" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label
+              >Antivirus/EDR on all endpoints?
+              <select name="core_edr" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label
+              >Monitor unauthorized access?
+              <select name="core_monitor" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label
+              >Immutable backups tested monthly?
+              <select name="core_backup" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label
+              >DPO/CISO appointed?
+              <select name="core_ciso" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label
+              >Follow CERT-IN 6-hour rule?
+              <select name="core_certin" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- [Other sections like BFSI, Manufacturing, etc. are unchanged here...] -->
+        <!-- Manufacturing -->
+        <div id="manufacturing-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">Manufacturing</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              Segment OT networks from corporate networks?
+              <select name="manufacturing_ot_segmentation" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Central registry of production-connected assets?
+              <select name="manufacturing_asset_registry" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Sensors/PLCs monitored for anomalies?
+              <select
+                name="manufacturing_sensors_monitoring"
+                class="input-select"
+              >
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- BFSI -->
+        <div id="bfsi-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">BFSI</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              Encrypt financial data in transit and at rest?
+              <select name="bfsi_encryption" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              24x7 monitoring with SOC or MSSP?
+              <select name="bfsi_soc_monitoring" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Use PAM/PIM for privileged account management?
+              <select name="bfsi_pam" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Insurance -->
+        <div id="insurance-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">Insurance</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              Regular vendor and third-party risk evaluation?
+              <select name="insurance_vendor_risk" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Underwriting systems assessed for cyber threats?
+              <select name="insurance_underwriting_cyber" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Trading & Retail -->
+        <div id="retail-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">Trading & Retail</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              POS systems hardened and segregated from network?
+              <select name="retail_pos_hardening" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              PCI DSS certified or equivalent controls in place?
+              <select name="retail_pcidss" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- IT / SaaS -->
+        <div id="it-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">IT / SaaS</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              Static/dynamic code analysis before releases?
+              <select name="it_code_analysis" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              Use CSPM tools to monitor public cloud configs?
+              <select name="it_cspm" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Healthcare -->
+        <div id="healthcare-section" class="industry-section hidden mt-6">
+          <h3 class="text-green-600 font-bold">Healthcare</h3>
+          <div class="space-y-4 mt-4">
+            <label>
+              PHI stored securely and encrypted (HIPAA compliant)?
+              <select name="healthcare_phi_encryption" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+            <label>
+              External sharing of health records logged & controlled?
+              <select name="healthcare_record_sharing" class="input-select">
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
         <!-- Technical Controls -->
         <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
           Technical Controls
         </h3>
-
         <label class="block mt-4">
           Do you have a firewall?
           <select
@@ -109,7 +328,6 @@
             <option>Partial</option>
           </select>
         </label>
-
         <label class="block mt-4">
           Is patch management automated?
           <select
@@ -121,7 +339,6 @@
             <option>Manual</option>
           </select>
         </label>
-
         <label class="block mt-4">
           Do you use 2FA?
           <select
@@ -138,7 +355,6 @@
         <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
           Governance & Compliance
         </h3>
-
         <label class="block mt-4">
           Do you retain logs for at least 180 days (CERT-IN)?
           <select
@@ -150,7 +366,6 @@
             <option>Partial</option>
           </select>
         </label>
-
         <label class="block mt-4">
           Do you follow CERT-IN's 6-hour incident reporting?
           <select
@@ -162,7 +377,6 @@
             <option>Partial</option>
           </select>
         </label>
-
         <label class="block mt-4">
           Have you conducted a DPIA under DPDPA?
           <select
@@ -207,5 +421,11 @@
         />
       </form>
     </div>
+
+    <style>
+      .input-select {
+        @apply w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+      }
+    </style>
   </body>
 </html>
