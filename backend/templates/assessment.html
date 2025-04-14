@@ -58,20 +58,20 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <img
-            src="{{ url_for('static', filename='logo1.png') }}"
+            src="{{ url_for('static', filename='forvis-mazars-logo.svg') }}"
             alt="Logo"
             class="w-30 h-15 mr-3"
           />
           <h1
-            class="text-2xl font-bold text-green-600 dark:text-green-500 px-10"
+            class="text-4xl font-bold text-green-600 dark:text-green-500 px-10"
           >
-            Cybosecure Networks Pvt Ltd
+            Forvis Mazars
           </h1>
         </div>
-        <!-- <button
+        <button
           onclick="toggleTheme()"
           class="w-12 h-12 flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-full shadow-md"
-        > -->
+        >
           <i
             id="theme-icon"
             class="fa-solid fa-moon text-2xl text-black dark:text-white"
@@ -81,7 +81,7 @@
 
       <!-- Title -->
       <h2 class="text-xl mt-10 text-green-600 dark:text-green-500 font-bold">
-        Industry-Specific Cyber Assessment
+        Cyber Assessment
       </h2>
 
       <form
@@ -126,42 +126,42 @@
           <div class="space-y-4 mt-4">
             <label
               >2FA enforced for all apps?
-              <select name="core_2fa" class="input-select">
+              <select name="core_2fa" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label
               >Antivirus/EDR on all endpoints?
-              <select name="core_edr" class="input-select">
+              <select name="core_edr" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label
               >Monitor unauthorized access?
-              <select name="core_monitor" class="input-select">
+              <select name="core_monitor" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label
               >Immutable backups tested monthly?
-              <select name="core_backup" class="input-select">
+              <select name="core_backup" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label
               >DPO/CISO appointed?
-              <select name="core_ciso" class="input-select">
+              <select name="core_ciso" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label
               >Follow CERT-IN 6-hour rule?
-              <select name="core_certin" class="input-select">
+              <select name="core_certin" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -176,14 +176,20 @@
           <div class="space-y-4 mt-4">
             <label>
               Segment OT networks from corporate networks?
-              <select name="manufacturing_ot_segmentation" class="input-select">
+              <select
+                name="manufacturing_ot_segmentation"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               Central registry of production-connected assets?
-              <select name="manufacturing_asset_registry" class="input-select">
+              <select
+                name="manufacturing_asset_registry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -192,7 +198,7 @@
               Sensors/PLCs monitored for anomalies?
               <select
                 name="manufacturing_sensors_monitoring"
-                class="input-select"
+                class="input-select text-black"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -207,21 +213,24 @@
           <div class="space-y-4 mt-4">
             <label>
               Encrypt financial data in transit and at rest?
-              <select name="bfsi_encryption" class="input-select">
+              <select name="bfsi_encryption" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               24x7 monitoring with SOC or MSSP?
-              <select name="bfsi_soc_monitoring" class="input-select">
+              <select
+                name="bfsi_soc_monitoring"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               Use PAM/PIM for privileged account management?
-              <select name="bfsi_pam" class="input-select">
+              <select name="bfsi_pam" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -235,14 +244,20 @@
           <div class="space-y-4 mt-4">
             <label>
               Regular vendor and third-party risk evaluation?
-              <select name="insurance_vendor_risk" class="input-select">
+              <select
+                name="insurance_vendor_risk"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               Underwriting systems assessed for cyber threats?
-              <select name="insurance_underwriting_cyber" class="input-select">
+              <select
+                name="insurance_underwriting_cyber"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -256,14 +271,17 @@
           <div class="space-y-4 mt-4">
             <label>
               POS systems hardened and segregated from network?
-              <select name="retail_pos_hardening" class="input-select">
+              <select
+                name="retail_pos_hardening"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               PCI DSS certified or equivalent controls in place?
-              <select name="retail_pcidss" class="input-select">
+              <select name="retail_pcidss" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -277,14 +295,14 @@
           <div class="space-y-4 mt-4">
             <label>
               Static/dynamic code analysis before releases?
-              <select name="it_code_analysis" class="input-select">
+              <select name="it_code_analysis" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               Use CSPM tools to monitor public cloud configs?
-              <select name="it_cspm" class="input-select">
+              <select name="it_cspm" class="input-select text-black">
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -298,14 +316,20 @@
           <div class="space-y-4 mt-4">
             <label>
               PHI stored securely and encrypted (HIPAA compliant)?
-              <select name="healthcare_phi_encryption" class="input-select">
+              <select
+                name="healthcare_phi_encryption"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               External sharing of health records logged & controlled?
-              <select name="healthcare_record_sharing" class="input-select">
+              <select
+                name="healthcare_record_sharing"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -325,7 +349,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
@@ -336,7 +360,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Manual</option>
+            <!-- <option>Manual</option> -->
           </select>
         </label>
         <label class="block mt-4">
@@ -347,7 +371,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -363,7 +387,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
@@ -374,7 +398,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
@@ -385,7 +409,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -397,7 +421,7 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -409,7 +433,346 @@
           >
             <option>Yes</option>
             <option>No</option>
-            <option>Partial</option>
+          </select>
+        </label>
+
+        <!-- Extended Security Assessment -->
+
+        <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
+          Extended Security Assessment
+        </h3>
+
+        <!-- Operations -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">Operations</h4>
+
+        <label class="block mt-4">
+          Incident management in place?
+          <select
+            name="incident_management"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Change management process established?
+          <select
+            name="change_management"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Access management framework in place?
+          <select
+            name="access_management_ops"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Asset & config management tracked?
+          <select
+            name="asset_config_mgmt"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Event monitoring and management?
+          <select
+            name="event_monitoring"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Vulnerability & patch management?
+          <select
+            name="vuln_patch_mgmt"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <!-- Applications -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">Applications</h4>
+
+        <label class="block mt-4">
+          Secure application platforms used?
+          <select
+            name="app_platforms"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          WAF (Web Application Firewall) deployed?
+          <select
+            name="waf"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          SIEM tools implemented?
+          <select
+            name="siem"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Advanced Persistent Threat (APT) protection?
+          <select
+            name="apt_protection"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <!-- Data Protection -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">
+          Data Protection
+        </h4>
+
+        <label class="block mt-4">
+          Big data analytics used for threat detection?
+          <select
+            name="big_data_analytics"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Is sensitive data encrypted?
+          <select
+            name="data_encryption"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Are emails secured and monitored?
+          <select
+            name="email_security"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <!-- Access Management -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">
+          Access Management
+        </h4>
+
+        <label class="block mt-4">
+          Identity Management (IDM) implemented?
+          <select
+            name="idm"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Single Sign-On (SSO) enabled?
+          <select
+            name="sso"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <!-- Endpoint -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">
+          Endpoint Security
+        </h4>
+
+        <label class="block mt-4">
+          Antivirus / HIPS deployed?
+          <select
+            name="antivirus_hips"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Patch management for endpoints?
+          <select
+            name="endpoint_patch"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Configuration management implemented?
+          <select
+            name="config_mgmt"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Vulnerability management done regularly?
+          <select
+            name="endpoint_vuln"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Authentication using AAA?
+          <select
+            name="aaa"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          2FA used across endpoints?
+          <select
+            name="endpoint_2fa"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Privileged Identity Management (PIM)?
+          <select
+            name="pim"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <!-- Infrastructure -->
+        <h4 class="mt-6 font-semibold text-md text-green-500">
+          Infrastructure
+        </h4>
+
+        <label class="block mt-4">
+          Firewall configured and monitored?
+          <select
+            name="infra_firewall"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          IPS (Intrusion Prevention System) in use?
+          <select
+            name="ips"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          VPN used for remote access?
+          <select
+            name="vpn"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Web gateway configured?
+          <select
+            name="web_gateway"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Network antivirus enabled?
+          <select
+            name="network_antivirus"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          Wireless network secured?
+          <select
+            name="wireless_security"
+            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+          >
+            <option>Yes</option>
+            <option>No</option>
           </select>
         </label>
 
