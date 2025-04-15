@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, make_response
 from fpdf import FPDF
 import matplotlib.pyplot as plt
@@ -9,8 +10,37 @@ from waitress import serve
 
 app = Flask(__name__)
 
-# Updated score map with only "Yes" and "No"
-score_map = {"Yes": 2, "No": 0}
+score_map = {"Yes": 1, "No": 0}  # Binary scoring
+
+# Updated categories (Operations removed)
+categories = {
+    "Applications": {
+        "fields": ["app_platforms", "waf", "siem", "apt_protection"],
+        "weight": 20
+    },
+    "Data Protection": {
+        "fields": ["big_data_analytics", "data_encryption", "email_security"],
+        "weight": 20
+    },
+    "Access Management": {
+        "fields": ["idm", "sso"],
+        "weight": 10
+    },
+    "Endpoint Security": {
+        "fields": [
+            "antivirus_hips", "endpoint_patch", "config_mgmt", "endpoint_vuln",
+            "aaa", "endpoint_2fa", "pim"
+        ],
+        "weight": 25
+    },
+    "Infrastructure": {
+        "fields": [
+            "infra_firewall", "ips", "vpn", "web_gateway", "network_antivirus",
+            "wireless_security"
+        ],
+        "weight": 25
+    }
+}
 
 @app.route('/')
 def home():
@@ -19,26 +49,36 @@ def home():
 @app.route('/generate_report', methods=['POST'])
 def generate_report():
     form = request.form
+    total_weighted_score = 0
+    category_results = {}
 
-    total_score = 0
-    score = 0
+    for category, data in categories.items():
+        fields = data["fields"]
+        weight = data["weight"]
 
-    for field in form:
-        if field == 'client_name':
-            continue
-        value = form.get(field)
-        if value in score_map:
-            total_score += 2  # since only "Yes" = 2, "No" = 0
-            score += score_map[value]
+        implemented = sum(score_map.get(form.get(field, "No"), 0) for field in fields)
+        total = len(fields)
+        weighted_score = (implemented / total) * weight if total else 0
 
-    incorrect_score = total_score - score
+        category_results[category] = {
+            "score": implemented,
+            "total": total,
+            "weight": weight,
+            "weighted_score": weighted_score
+        }
 
-    posture = "Strong" if score >= 0.8 * total_score else "Moderate" if score >= 0.5 * total_score else "Weak"
-    percentage = round((score / total_score) * 100) if total_score > 0 else 0
+        total_weighted_score += weighted_score
 
-    # Pie chart
+    final_percentage = round(total_weighted_score, 2)
+    posture = (
+        "Strong" if final_percentage >= 80 else
+        "Moderate" if final_percentage >= 50 else
+        "Weak"
+    )
+
+    # Pie chart generation
     labels = ['Score Received', 'Score Missed']
-    sizes = [score, incorrect_score]
+    sizes = [final_percentage, 100 - final_percentage]
     colors = ['#00d15f', '#ff4c4c']
     explode = (0.1, 0)
 
@@ -52,29 +92,37 @@ def generate_report():
     chart_stream.seek(0)
     plt.close()
 
+    # PDF report generation
     pdf = FPDF()
     pdf.add_page()
 
     try:
-        logo_path = os.path.abspath('logo1.png')
+        logo_path = os.path.abspath('logo2.png')
         pdf.image(logo_path, x=10, y=8, w=40)
     except Exception as e:
         print(f"Error adding logo: {e}")
 
     pdf.set_font("Arial", "B", 16)
     pdf.set_text_color(0, 209, 95)
-    pdf.cell(190, 10, "Cybosecure Networks Pvt Ltd", ln=True, align="C")
+    pdf.cell(190, 10, "Forvis Mazars", ln=True, align="C")
 
     pdf.ln(5)
     pdf.set_font("Arial", "", 12)
     pdf.set_text_color(0, 0, 0)
     pdf.cell(200, 10, f"Client: {form.get('client_name', 'N/A')}", ln=True)
-    pdf.cell(200, 10, f"Total Score: {score}/{total_score} - {percentage}%", ln=True)
+    pdf.cell(200, 10, f"Total Weighted Score: {final_percentage}%", ln=True)
     pdf.cell(200, 10, f"Security Posture: {posture}", ln=True)
 
     pdf.ln(10)
-    pdf.multi_cell(0, 10, "This report includes a comprehensive assessment of technical and governance-level controls. "
-                          "Please review the recommendations provided to enhance your security posture.")
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Category-wise Breakdown", ln=True)
+
+    pdf.set_font("Arial", "", 12)
+    for cat, result in category_results.items():
+        pdf.cell(200, 10, f"{cat}: {result['score']}/{result['total']} - Weighted: {round(result['weighted_score'], 2)}%", ln=True)
+
+    pdf.ln(10)
+    pdf.multi_cell(0, 10, "This report includes a comprehensive assessment of technical and governance-level controls. Please review the recommendations provided to enhance your security posture.")
 
     pdf.ln(10)
     chart_path = 'chart.png'
@@ -85,15 +133,47 @@ def generate_report():
 
     pdf.ln(10)
     pdf.set_font("Arial", "B", 14)
-    pdf.cell(200, 10, "Further Enhancement of Security Posture", ln=True, align="L")
-
+    pdf.cell(200, 10, "Roadmap Recommendation", ln=True, align="L")
     pdf.ln(5)
     pdf.set_font("Arial", "", 12)
-    pdf.multi_cell(0, 10, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                          "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit "
-                          "in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.")
 
-    response = make_response(pdf.output(dest="S").encode("latin1"))
+    if posture == "Weak":
+        roadmap = (
+            "Long-Term (12-24 Months):\n"
+            "- Access & Endpoint Management:\n"
+            "  - Implement advanced IAM solutions, including Single Sign-On (SSO) and Privileged Access Management (PAM).\n"
+            "  - Deploy endpoint detection and response (EDR) solutions across all devices.\n"
+            "- Industry-Specific Controls:\n"
+            "  - Achieve relevant industry certifications (e.g., PCI DSS, HIPAA) based on sector requirements.\n"
+            "  - Regularly assess and update controls to align with evolving industry standards."
+        )
+    elif posture == "Moderate":
+        roadmap = (
+            "Mid-Term (6-12 Months):\n"
+            "- Operations & Infrastructure:\n"
+            "  - Establish comprehensive incident and change management processes.\n"
+            "  - Deploy intrusion prevention systems (IPS) and secure VPNs for remote access.\n"
+            "- Application & Data Security:\n"
+            "  - Integrate Web Application Firewalls (WAF) and Security Information and Event Management (SIEM) tools.\n"
+            "  - Ensure sensitive data is encrypted both at rest and in transit."
+        )
+    else:
+        roadmap = (
+            "Short-Term (0-6 Months):\n"
+            "- Governance & Compliance:\n"
+            "  - Appoint a Data Protection Officer (DPO) or Chief Information Security Officer (CISO).\n"
+            "  - Develop and implement a Cyber Crisis Management Plan (CCMP).\n"
+            "  - Ensure compliance with CERT-IN's 6-hour incident reporting requirement.\n"
+            "- Technical Controls:\n"
+            "  - Implement or enhance firewall configurations.\n"
+            "  - Automate patch management processes.\n"
+            "  - Enforce 2FA across all applications and endpoints."
+        )
+
+
+    pdf.multi_cell(0, 10, roadmap)
+
+    response = make_response(pdf.output(dest="S").encode("latin1", errors="ignore"))
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'attachment; filename=cyber_risk_report.pdf'
     return response

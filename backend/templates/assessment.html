@@ -99,12 +99,12 @@
             required
           />
         </label>
-
         <!-- Industry Selection -->
         <label class="block mt-6">
           Select Industry:
           <select
             name="industry"
+            data-category="industry"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             onchange="showQuestions(this.value)"
             required
@@ -124,44 +124,68 @@
         <div id="core-section" class="industry-section hidden mt-6">
           <h3 class="text-green-600 font-bold">Core (All Industries)</h3>
           <div class="space-y-4 mt-4">
-            <label
-              >2FA enforced for all apps?
-              <select name="core_2fa" class="input-select text-black">
+            <label>
+              2FA enforced for all apps?
+              <select
+                name="core_2fa"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
-            <label
-              >Antivirus/EDR on all endpoints?
-              <select name="core_edr" class="input-select text-black">
+            <label>
+              Antivirus/EDR on all endpoints?
+              <select
+                name="core_edr"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
-            <label
-              >Monitor unauthorized access?
-              <select name="core_monitor" class="input-select text-black">
+            <label>
+              Monitor unauthorized access?
+              <select
+                name="core_monitor"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
-            <label
-              >Immutable backups tested monthly?
-              <select name="core_backup" class="input-select text-black">
+            <label>
+              Immutable backups tested monthly?
+              <select
+                name="core_backup"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
-            <label
-              >DPO/CISO appointed?
-              <select name="core_ciso" class="input-select text-black">
+            <label>
+              DPO/CISO appointed?
+              <select
+                name="core_ciso"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
-            <label
-              >Follow CERT-IN 6-hour rule?
-              <select name="core_certin" class="input-select text-black">
+            <label>
+              Follow CERT-IN 6-hour rule?
+              <select
+                name="core_certin"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -169,7 +193,6 @@
           </div>
         </div>
 
-        <!-- [Other sections like BFSI, Manufacturing, etc. are unchanged here...] -->
         <!-- Manufacturing -->
         <div id="manufacturing-section" class="industry-section hidden mt-6">
           <h3 class="text-green-600 font-bold">Manufacturing</h3>
@@ -178,6 +201,7 @@
               Segment OT networks from corporate networks?
               <select
                 name="manufacturing_ot_segmentation"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -188,6 +212,7 @@
               Central registry of production-connected assets?
               <select
                 name="manufacturing_asset_registry"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -198,6 +223,7 @@
               Sensors/PLCs monitored for anomalies?
               <select
                 name="manufacturing_sensors_monitoring"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -213,7 +239,11 @@
           <div class="space-y-4 mt-4">
             <label>
               Encrypt financial data in transit and at rest?
-              <select name="bfsi_encryption" class="input-select text-black">
+              <select
+                name="bfsi_encryption"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -222,6 +252,7 @@
               24x7 monitoring with SOC or MSSP?
               <select
                 name="bfsi_soc_monitoring"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -230,7 +261,11 @@
             </label>
             <label>
               Use PAM/PIM for privileged account management?
-              <select name="bfsi_pam" class="input-select text-black">
+              <select
+                name="bfsi_pam"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -246,6 +281,7 @@
               Regular vendor and third-party risk evaluation?
               <select
                 name="insurance_vendor_risk"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -256,6 +292,7 @@
               Underwriting systems assessed for cyber threats?
               <select
                 name="insurance_underwriting_cyber"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -273,6 +310,7 @@
               POS systems hardened and segregated from network?
               <select
                 name="retail_pos_hardening"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -281,7 +319,11 @@
             </label>
             <label>
               PCI DSS certified or equivalent controls in place?
-              <select name="retail_pcidss" class="input-select text-black">
+              <select
+                name="retail_pcidss"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -295,14 +337,22 @@
           <div class="space-y-4 mt-4">
             <label>
               Static/dynamic code analysis before releases?
-              <select name="it_code_analysis" class="input-select text-black">
+              <select
+                name="it_code_analysis"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label>
               Use CSPM tools to monitor public cloud configs?
-              <select name="it_cspm" class="input-select text-black">
+              <select
+                name="it_cspm"
+                data-category="industry"
+                class="input-select text-black"
+              >
                 <option>Yes</option>
                 <option>No</option>
               </select>
@@ -318,6 +368,7 @@
               PHI stored securely and encrypted (HIPAA compliant)?
               <select
                 name="healthcare_phi_encryption"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -328,6 +379,7 @@
               External sharing of health records logged & controlled?
               <select
                 name="healthcare_record_sharing"
+                data-category="industry"
                 class="input-select text-black"
               >
                 <option>Yes</option>
@@ -345,33 +397,33 @@
           Do you have a firewall?
           <select
             name="firewall"
+            data-category="technical"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
           Is patch management automated?
           <select
             name="patch"
+            data-category="technical"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Manual</option> -->
           </select>
         </label>
         <label class="block mt-4">
           Do you use 2FA?
           <select
             name="twofa"
+            data-category="technical"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -383,33 +435,33 @@
           Do you retain logs for at least 180 days (CERT-IN)?
           <select
             name="logs"
+            data-category="governance"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
           Do you follow CERT-IN's 6-hour incident reporting?
           <select
             name="incidents"
+            data-category="governance"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
         <label class="block mt-4">
           Have you conducted a DPIA under DPDPA?
           <select
             name="dpia"
+            data-category="governance"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -417,11 +469,11 @@
           Is user data stored in Indian data centers?
           <select
             name="data_location"
+            data-category="governance"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
             <option>No</option>
-            <!-- <option>Partial</option> -->
           </select>
         </label>
 
@@ -429,81 +481,7 @@
           Do you have a Cyber Crisis Management Plan (CCMP)?
           <select
             name="ccmp"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <!-- Extended Security Assessment -->
-
-        <h3 class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold">
-          Extended Security Assessment
-        </h3>
-
-        <!-- Operations -->
-        <h4 class="mt-6 font-semibold text-md text-green-500">Operations</h4>
-
-        <label class="block mt-4">
-          Incident management in place?
-          <select
-            name="incident_management"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <label class="block mt-4">
-          Change management process established?
-          <select
-            name="change_management"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <label class="block mt-4">
-          Access management framework in place?
-          <select
-            name="access_management_ops"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <label class="block mt-4">
-          Asset & config management tracked?
-          <select
-            name="asset_config_mgmt"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <label class="block mt-4">
-          Event monitoring and management?
-          <select
-            name="event_monitoring"
-            class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </label>
-
-        <label class="block mt-4">
-          Vulnerability & patch management?
-          <select
-            name="vuln_patch_mgmt"
+            data-category="governance"
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Yes</option>
@@ -518,8 +496,10 @@
           Secure application platforms used?
           <select
             name="app_platforms"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -529,8 +509,10 @@
           WAF (Web Application Firewall) deployed?
           <select
             name="waf"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -540,8 +522,10 @@
           SIEM tools implemented?
           <select
             name="siem"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -551,8 +535,10 @@
           Advanced Persistent Threat (APT) protection?
           <select
             name="apt_protection"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -567,8 +553,10 @@
           Big data analytics used for threat detection?
           <select
             name="big_data_analytics"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -578,8 +566,10 @@
           Is sensitive data encrypted?
           <select
             name="data_encryption"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -589,8 +579,10 @@
           Are emails secured and monitored?
           <select
             name="email_security"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -605,8 +597,10 @@
           Identity Management (IDM) implemented?
           <select
             name="idm"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -616,14 +610,16 @@
           Single Sign-On (SSO) enabled?
           <select
             name="sso"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
         </label>
 
-        <!-- Endpoint -->
+        <!-- Endpoint Security -->
         <h4 class="mt-6 font-semibold text-md text-green-500">
           Endpoint Security
         </h4>
@@ -632,8 +628,10 @@
           Antivirus / HIPS deployed?
           <select
             name="antivirus_hips"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -643,8 +641,10 @@
           Patch management for endpoints?
           <select
             name="endpoint_patch"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -654,8 +654,10 @@
           Configuration management implemented?
           <select
             name="config_mgmt"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -665,8 +667,10 @@
           Vulnerability management done regularly?
           <select
             name="endpoint_vuln"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -676,8 +680,10 @@
           Authentication using AAA?
           <select
             name="aaa"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -687,8 +693,10 @@
           2FA used across endpoints?
           <select
             name="endpoint_2fa"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -698,8 +706,10 @@
           Privileged Identity Management (PIM)?
           <select
             name="pim"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -714,8 +724,10 @@
           Firewall configured and monitored?
           <select
             name="infra_firewall"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -725,8 +737,10 @@
           IPS (Intrusion Prevention System) in use?
           <select
             name="ips"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -736,8 +750,10 @@
           VPN used for remote access?
           <select
             name="vpn"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -747,8 +763,10 @@
           Web gateway configured?
           <select
             name="web_gateway"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -758,8 +776,10 @@
           Network antivirus enabled?
           <select
             name="network_antivirus"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
@@ -769,8 +789,10 @@
           Wireless network secured?
           <select
             name="wireless_security"
+            required
             class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
+            <option value="" disabled selected>Select an option</option>
             <option>Yes</option>
             <option>No</option>
           </select>
