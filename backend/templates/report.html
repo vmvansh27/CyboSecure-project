@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assessment Report</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-8">
+    <div
+      class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md p-6"
+    >
+      <h1 class="text-2xl font-bold mb-4 text-green-500">Assessment Report</h1>
+
+      <div class="mb-6">
+        <h2 class="text-lg font-semibold">
+          Total Score: {{ final_percentage }}%
+        </h2>
+        <h3 class="text-md font-medium mt-2">
+          Security Posture:
+          <span class="text-blue-400 font-semibold">{{ posture }}</span>
+        </h3>
+        <h3 class="text-md font-medium mt-4">Recommendations:</h3>
+        <pre
+          class="whitespace-pre-wrap bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mt-2"
+        >
+{{ roadmap }}</pre
+        >
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {% for category, score in scores.items() %}
+        <div class="border p-4 rounded bg-gray-100 dark:bg-gray-700">
+          <h4 class="font-semibold text-green-400">{{ category }}</h4>
+          <p class="mt-1">Score: {{ score.score }}/{{ score.total }}</p>
+          <p class="mt-1">
+            Weighted Score: {{ score.weighted_score | round(2) }}%
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- <form action="/download" method="post" class="mt-8">
+        <input
+          type="hidden"
+          name="form_data"
+          value="{{ form | tojson | safe }}"
+        />
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-4"
+        >
+          Download PDF Report
+        </button>
+      </form> -->
+
+      <form action="/download" method="post" class="mt-8">
+        <textarea name="form_data" class="hidden">{{ form | tojson }}</textarea>
+        <button
+          type="submit"
+          class="mt-10 bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
+        >
+          Download PDF Report
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
