@@ -156,7 +156,7 @@ def download():
     pdf.set_text_color(0, 209, 95) 
     pdf.cell(190, 10, "Forvis Mazars", ln=True, align="C") 
  
-    pdf.ln(5) 
+    pdf.ln(10) 
     pdf.set_font("Arial", "", 12) 
     pdf.set_text_color(0, 0, 0) 
     pdf.cell(200, 10, f"Client: {form.get('client_name', 'N/A')}", ln=True) 
@@ -178,7 +178,7 @@ def download():
     chart_path = 'chart.png' 
     with open(chart_path, 'wb') as f: 
         f.write(chart_stream.read()) 
-    pdf.image(chart_path, x=50, y=None, w=110) 
+    pdf.image(chart_path, x=50, y=None, w=90) 
     os.remove(chart_path) 
  
     pdf.ln(10) 
