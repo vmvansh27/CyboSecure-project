@@ -81,34 +81,36 @@
       </div>
 
       <!-- Title -->
-      <h2 class="text-xl mt-10 text-green-600 dark:text-green-500 font-bold">
+      <h2
+        class="text-xl mt-10 mb-5 text-green-600 dark:text-green-500 font-bold"
+      >
         Cyber Assessment
       </h2>
 
       <form
         action="/generate_report"
         method="post"
-        class="bg-zinc-200 dark:bg-gray-800 p-6 rounded-md shadow-md grid grid-cols-1 md:grid-cols-2 gap-6"
+        class="bg-zinc-200 dark:bg-gray-800 p-6 rounded-md shadow-md flex flex-col md:flex-row md:divide-x md:divide-gray-300 md:dark:divide-gray-600"
       >
-        <div>
+        <div class="flex-1 md:pr-6">
           <!-- Client Name -->
           <label class="block mt-4">
-            Name:
+            <div class="mb-2">Name:</div>
             <input
               type="text"
               name="client_name"
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 ml-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               required
             />
           </label>
           <!-- Industry Selection -->
           <div>
             <label class="block mt-6">
-              Select Industry:
+              <div class="mb-2">Select Industry:</div>
               <select
                 name="industry"
                 data-category="industry"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 onchange="showQuestions(this.value)"
                 required
               >
@@ -402,33 +404,33 @@
               Technical Controls
             </h3>
             <label class="block mt-4">
-              Do you have a firewall?
+              <div class="mb-2">Do you have a firewall?</div>
               <select
                 name="firewall"
                 data-category="technical"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label class="block mt-4">
-              Is patch management automated?
+              <div class="mb-2">Is patch management automated?</div>
               <select
                 name="patch"
                 data-category="technical"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label class="block mt-4">
-              Do you use 2FA?
+              <div class="mb-2">Do you use 2FA?</div>
               <select
                 name="twofa"
                 data-category="technical"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -446,7 +448,7 @@
               <select
                 name="logs"
                 data-category="governance"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -457,18 +459,18 @@
               <select
                 name="incidents"
                 data-category="governance"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
               </select>
             </label>
             <label class="block mt-4">
-              Have you conducted a DPIA under DPDPA?
+              <div class="mb-2">Have you conducted a DPIA under DPDPA?</div>
               <select
                 name="dpia"
                 data-category="governance"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -476,11 +478,13 @@
             </label>
 
             <label class="block mt-4">
-              Is user data stored in Indian data centers?
+              <div class="mb-2">
+                Is user data stored in Indian data centers?
+              </div>
               <select
                 name="data_location"
                 data-category="governance"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -492,7 +496,7 @@
               <select
                 name="ccmp"
                 data-category="governance"
-                class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               >
                 <option>Yes</option>
                 <option>No</option>
@@ -507,11 +511,11 @@
           </h4>
 
           <label class="block mt-4">
-            Secure application platforms used?
+            <div class="mb-2">Secure application platforms used?</div>
             <select
               name="app_platforms"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -520,11 +524,11 @@
           </label>
 
           <label class="block mt-4">
-            WAF (Web Application Firewall) deployed?
+            <div class="mb-2">WAF (Web Application Firewall) deployed?</div>
             <select
               name="waf"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -533,11 +537,11 @@
           </label>
 
           <label class="block mt-4">
-            SIEM tools implemented?
+            <div class="mb-2">SIEM tools implemented?</div>
             <select
               name="siem"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -546,11 +550,11 @@
           </label>
 
           <label class="block mt-4">
-            Advanced Persistent Threat (APT) protection?
+            <div class="mb-2">Advanced Persistent Threat (APT) protection?</div>
             <select
               name="apt_protection"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -568,11 +572,13 @@
           </h4>
 
           <label class="block mt-4">
-            Big data analytics used for threat detection?
+            <div class="mb-2">
+              Big data analytics used for threat detection?
+            </div>
             <select
               name="big_data_analytics"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -581,11 +587,11 @@
           </label>
 
           <label class="block mt-4">
-            Is sensitive data encrypted?
+            <div class="mb-2">Is sensitive data encrypted?</div>
             <select
               name="data_encryption"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -594,11 +600,11 @@
           </label>
 
           <label class="block mt-4">
-            Are emails secured and monitored?
+            <div class="mb-2">Are emails secured and monitored?</div>
             <select
               name="email_security"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -606,7 +612,7 @@
             </select>
           </label>
         </div>
-        <div>
+        <div class="flex-1 md:pl-6">
           <!-- Access Management -->
           <h4
             class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
@@ -615,11 +621,11 @@
           </h4>
 
           <label class="block mt-4">
-            Identity Management (IDM) implemented?
+            <div class="mb-2">Identity Management (IDM) implemented?</div>
             <select
               name="idm"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -628,11 +634,11 @@
           </label>
 
           <label class="block mt-4">
-            Single Sign-On (SSO) enabled?
+            <div class="mb-2">Single Sign-On (SSO) enabled?</div>
             <select
               name="sso"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -648,11 +654,11 @@
           </h4>
 
           <label class="block mt-4">
-            Antivirus / HIPS deployed?
+            <div class="mb-2">Antivirus / HIPS deployed?</div>
             <select
               name="antivirus_hips"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -661,11 +667,11 @@
           </label>
 
           <label class="block mt-4">
-            Patch management for endpoints?
+            <div class="mb-2">Patch management for endpoints?</div>
             <select
               name="endpoint_patch"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -674,11 +680,11 @@
           </label>
 
           <label class="block mt-4">
-            Configuration management implemented?
+            <div class="mb-2">Configuration management implemented?</div>
             <select
               name="config_mgmt"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -687,11 +693,11 @@
           </label>
 
           <label class="block mt-4">
-            Vulnerability management done regularly?
+            <div class="mb-2">Vulnerability management done regularly?</div>
             <select
               name="endpoint_vuln"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -700,11 +706,11 @@
           </label>
 
           <label class="block mt-4">
-            Authentication using AAA?
+            <div class="mb-2">Authentication using AAA?</div>
             <select
               name="aaa"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -713,11 +719,11 @@
           </label>
 
           <label class="block mt-4">
-            2FA used across endpoints?
+            <div class="mb-2">2FA used across endpoints?</div>
             <select
               name="endpoint_2fa"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -726,11 +732,11 @@
           </label>
 
           <label class="block mt-4">
-            Privileged Identity Management (PIM)?
+            <div class="mb-2">Privileged Identity Management (PIM)?</div>
             <select
               name="pim"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -746,11 +752,11 @@
           </h4>
 
           <label class="block mt-4">
-            Firewall configured and monitored?
+            <div class="mb-2">Firewall configured and monitored?</div>
             <select
               name="infra_firewall"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -759,11 +765,11 @@
           </label>
 
           <label class="block mt-4">
-            IPS (Intrusion Prevention System) in use?
+            <div class="mb-2">IPS (Intrusion Prevention System) in use?</div>
             <select
               name="ips"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -772,11 +778,11 @@
           </label>
 
           <label class="block mt-4">
-            VPN used for remote access?
+            <div class="mb-2">VPN used for remote access?</div>
             <select
               name="vpn"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -785,11 +791,11 @@
           </label>
 
           <label class="block mt-4">
-            Web gateway configured?
+            <div class="mb-2">Web gateway configured?</div>
             <select
               name="web_gateway"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -798,11 +804,11 @@
           </label>
 
           <label class="block mt-4">
-            Network antivirus enabled?
+            <div class="mb-2">Network antivirus enabled?</div>
             <select
               name="network_antivirus"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -811,11 +817,11 @@
           </label>
 
           <label class="block mt-4">
-            Wireless network secured?
+            <div class="mb-2">Wireless network secured?</div>
             <select
               name="wireless_security"
               required
-              class="w-full mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
               <option value="" disabled selected>Select an option</option>
               <option>Yes</option>
@@ -834,7 +840,7 @@
           >
             <button
               type="submit"
-              class="mt-10 bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
+              class="mt-10 bg-green-500 dark:bg-green-700 text-white px-5 py-4 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
             >
               Generate
             </button>

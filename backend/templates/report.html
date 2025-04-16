@@ -19,10 +19,19 @@
         <h2 class="text-lg font-semibold">
           Total Score: {{ final_percentage }}%
         </h2>
-        <h3 class="text-md font-medium mt-2">
+        <!-- <h3 class="text-md font-medium mt-2">
           Security Posture:
           <span class="text-blue-400 font-semibold">{{ posture }}</span>
+        </h3> -->
+        <h3 class="text-md font-medium mt-2">
+          Security Posture:
+          <span
+            class="font-semibold {% if posture == 'Weak' %} text-red-500 {% elif posture == 'Moderate' %} text-yellow-400 {% elif posture == 'Strong' %} text-blue-400 {% else %} text-gray-400 {% endif %}"
+          >
+            {{ posture }}
+          </span>
         </h3>
+
         <h3 class="text-md font-medium mt-4">Recommendations:</h3>
         <pre
           class="whitespace-pre-wrap bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mt-2"
