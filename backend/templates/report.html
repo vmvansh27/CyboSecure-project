@@ -28,13 +28,18 @@
             {{ posture }}
           </span>
         </h3>
+      </div>
 
-        <h3 class="text-md font-medium mt-4">Recommendations:</h3>
-        <pre
-          class="whitespace-pre-wrap bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mt-2"
-        >
-{{ roadmap }}</pre
-        >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        {% for category, score in scores.items() %}
+        <div class="border p-4 rounded bg-gray-100 dark:bg-gray-700">
+          <h4 class="font-semibold text-green-400">{{ category }}</h4>
+          <p class="mt-1">Score: {{ score.score }}/{{ score.total }}</p>
+          <p class="mt-1">
+            Weighted Score: {{ score.weighted_score | round(2) }}%
+          </p>
+        </div>
+        {% endfor %}
       </div>
 
       <!-- 🎯 Pie chart and Bar chart side by side -->
@@ -58,18 +63,17 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        {% for category, score in scores.items() %}
-        <div class="border p-4 rounded bg-gray-100 dark:bg-gray-700">
-          <h4 class="font-semibold text-green-400">{{ category }}</h4>
-          <p class="mt-1">Score: {{ score.score }}/{{ score.total }}</p>
-          <p class="mt-1">
-            Weighted Score: {{ score.weighted_score | round(2) }}%
-          </p>
-        </div>
-        {% endfor %}
+      <!-- ✅ Move Roadmap Recommendations HERE, before Download button -->
+      <div class="mt-10">
+        <h3 class="text-lg font-semibold mb-2">Roadmap Recommendations:</h3>
+        <pre
+          class="whitespace-pre-wrap bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm"
+        >
+{{ roadmap }}
+        </pre>
       </div>
 
+      <!-- Download Button -->
       <form action="/download" method="post" class="mt-8">
         <textarea name="form_data" class="hidden">{{ form | tojson }}</textarea>
         <button

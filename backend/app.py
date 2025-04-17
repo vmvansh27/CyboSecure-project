@@ -70,38 +70,34 @@ def calculate_scores(form):
         "Weak"
     )
 
-    if posture == "Weak":
-        roadmap = (
-            "Long-Term (12-24 Months):\n"
-            "- Access & Endpoint Management:\n"
-            "  - Implement advanced IAM solutions, including Single Sign-On (SSO) and Privileged Access Management (PAM).\n"
-            "  - Deploy endpoint detection and response (EDR) solutions across all devices.\n"
-            "- Industry-Specific Controls:\n"
-            "  - Achieve relevant industry certifications (e.g., PCI DSS, HIPAA) based on sector requirements.\n"
-            "  - Regularly assess and update controls to align with evolving industry standards."
-        )
-    elif posture == "Moderate":
-        roadmap = (
-            "Mid-Term (6-12 Months):\n"
-            "- Operations & Infrastructure:\n"
-            "  - Establish comprehensive incident and change management processes.\n"
-            "  - Deploy intrusion prevention systems (IPS) and secure VPNs for remote access.\n"
-            "- Application & Data Security:\n"
-            "  - Integrate Web Application Firewalls (WAF) and Security Information and Event Management (SIEM) tools.\n"
-            "  - Ensure sensitive data is encrypted both at rest and in transit."
-        )
-    else:
-        roadmap = (
-            "Short-Term (0-6 Months):\n"
-            "- Governance & Compliance:\n"
-            "  - Appoint a Data Protection Officer (DPO) or Chief Information Security Officer (CISO).\n"
-            "  - Develop and implement a Cyber Crisis Management Plan (CCMP).\n"
-            "  - Ensure compliance with CERT-IN's 6-hour incident reporting requirement.\n"
-            "- Technical Controls:\n"
-            "  - Implement or enhance firewall configurations.\n"
-            "  - Automate patch management processes.\n"
-            "  - Enforce 2FA across all applications and endpoints."
-        )
+
+    roadmap = (
+        "Long-Term (12-24 Months):\n"
+        "- Access & Endpoint Management:\n"
+        "  - Implement advanced IAM solutions, including Single Sign-On (SSO) and Privileged Access Management (PAM).\n"
+        "  - Deploy endpoint detection and response (EDR) solutions across all devices.\n"
+        "- Industry-Specific Controls:\n"
+        "  - Achieve relevant industry certifications (e.g., PCI DSS, HIPAA) based on sector requirements.\n"
+        "  - Regularly assess and update controls to align with evolving industry standards. \n\n"
+
+        "Mid-Term (6-12 Months):\n"
+        "- Operations & Infrastructure:\n"
+        "  - Establish comprehensive incident and change management processes.\n"
+        "  - Deploy intrusion prevention systems (IPS) and secure VPNs for remote access.\n"
+        "- Application & Data Security:\n"
+        "  - Integrate Web Application Firewalls (WAF) and Security Information and Event Management (SIEM) tools.\n"
+        "  - Ensure sensitive data is encrypted both at rest and in transit. \n\n"
+
+        "Short-Term (0-6 Months):\n"
+        "- Governance & Compliance:\n"
+        "  - Appoint a Data Protection Officer (DPO) or Chief Information Security Officer (CISO).\n"
+        "  - Develop and implement a Cyber Crisis Management Plan (CCMP).\n"
+        "  - Ensure compliance with CERT-IN's 6-hour incident reporting requirement.\n"
+        "- Technical Controls:\n"
+        "  - Implement or enhance firewall configurations.\n"
+        "  - Automate patch management processes.\n"
+        "  - Enforce 2FA across all applications and endpoints."
+    )
 
     return category_results, final_percentage, posture, roadmap
 
@@ -212,11 +208,11 @@ def download():
     except Exception as e:
         print(f"Error adding logo: {e}")
 
-    pdf.set_font("Arial", "B", 16)
-    pdf.set_text_color(0, 209, 95)
-    pdf.cell(190, 10, "Forvis Mazars", ln=True, align="C")
+    # pdf.set_font("Arial", "B", 16)
+    # pdf.set_text_color(0, 209, 95)
+    # pdf.cell(190, 10, "Forvis Mazars", ln=True, align="C")
 
-    pdf.ln(10)
+    pdf.ln(20)
     pdf.set_font("Arial", "", 12)
     pdf.set_text_color(0, 0, 0)
     pdf.cell(200, 10, f"Client: {form.get('client_name', 'N/A')}", ln=True)
