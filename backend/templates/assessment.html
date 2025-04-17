@@ -53,7 +53,9 @@
   </head>
 
   <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    <div class="container mx-auto px-4">
+    <!-- <div class="container max-w-4xl mx-auto px-4"> -->
+
+    <div class="container mx-auto px-4 max-w-5xl">
       <!-- <div class="container mx-auto px-4 py-8 max-w-4xl mx-auto"> -->
       <!-- Header -->
       <div class="flex items-center justify-between">
@@ -129,67 +131,67 @@
             <div id="core-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">Core (All Industries)</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  2FA enforced for all apps?
+                <label class="block mt-4">
+                  <div class="mb-2">2FA enforced for all apps?</div>
                   <select
                     name="core_2fa"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Antivirus/EDR on all endpoints?
+                <label class="block mt-4">
+                  <div class="mb-2">Antivirus/EDR on all endpoints?</div>
                   <select
                     name="core_edr"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Monitor unauthorized access?
+                <label class="block mt-4">
+                  <div class="mb-2">Monitor unauthorized access?</div>
                   <select
                     name="core_monitor"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Immutable backups tested monthly?
+                <label class="block mt-4">
+                  <div class="mb-2">Immutable backups tested monthly?</div>
                   <select
                     name="core_backup"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  DPO/CISO appointed?
+                <label class="block mt-4">
+                  <div class="mb-2">DPO/CISO appointed?</div>
                   <select
                     name="core_ciso"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Follow CERT-IN 6-hour rule?
+                <label class="block mt-4">
+                  <div class="mb-2">Follow CERT-IN 6-hour rule?</div>
                   <select
                     name="core_certin"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -205,34 +207,38 @@
             >
               <h3 class="text-green-600 font-bold">Manufacturing</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  Segment OT networks from corporate networks?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Segment OT networks from corporate networks?
+                  </div>
                   <select
                     name="manufacturing_ot_segmentation"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Central registry of production-connected assets?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Central registry of production-connected assets?
+                  </div>
                   <select
                     name="manufacturing_asset_registry"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Sensors/PLCs monitored for anomalies?
+                <label class="block mt-4">
+                  <div class="mb-2">Sensors/PLCs monitored for anomalies?</div>
                   <select
                     name="manufacturing_sensors_monitoring"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -245,34 +251,38 @@
             <div id="bfsi-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">BFSI</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  Encrypt financial data in transit and at rest?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Encrypt financial data in transit and at rest?
+                  </div>
                   <select
                     name="bfsi_encryption"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  24x7 monitoring with SOC or MSSP?
+                <label class="block mt-4">
+                  <div class="mb-2">24x7 monitoring with SOC or MSSP?</div>
                   <select
                     name="bfsi_soc_monitoring"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Use PAM/PIM for privileged account management?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Use PAM/PIM for privileged account management?
+                  </div>
                   <select
                     name="bfsi_pam"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -285,23 +295,27 @@
             <div id="insurance-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">Insurance</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  Regular vendor and third-party risk evaluation?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Regular vendor and third-party risk evaluation?
+                  </div>
                   <select
                     name="insurance_vendor_risk"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Underwriting systems assessed for cyber threats?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Underwriting systems assessed for cyber threats?
+                  </div>
                   <select
                     name="insurance_underwriting_cyber"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -314,23 +328,27 @@
             <div id="retail-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">Trading & Retail</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  POS systems hardened and segregated from network?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    POS systems hardened and segregated from network?
+                  </div>
                   <select
                     name="retail_pos_hardening"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  PCI DSS certified or equivalent controls in place?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    PCI DSS certified or equivalent controls in place?
+                  </div>
                   <select
                     name="retail_pcidss"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -343,23 +361,27 @@
             <div id="it-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">IT / SaaS</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  Static/dynamic code analysis before releases?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Static/dynamic code analysis before releases?
+                  </div>
                   <select
                     name="it_code_analysis"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  Use CSPM tools to monitor public cloud configs?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    Use CSPM tools to monitor public cloud configs?
+                  </div>
                   <select
                     name="it_cspm"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -372,23 +394,27 @@
             <div id="healthcare-section" class="industry-section hidden mt-6">
               <h3 class="text-green-600 font-bold">Healthcare</h3>
               <div class="space-y-4 mt-4">
-                <label>
-                  PHI stored securely and encrypted (HIPAA compliant)?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    PHI stored securely and encrypted (HIPAA compliant)?
+                  </div>
                   <select
                     name="healthcare_phi_encryption"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </label>
-                <label>
-                  External sharing of health records logged & controlled?
+                <label class="block mt-4">
+                  <div class="mb-2">
+                    External sharing of health records logged & controlled?
+                  </div>
                   <select
                     name="healthcare_record_sharing"
                     data-category="industry"
-                    class="input-select text-black"
+                    class="w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                   >
                     <option>Yes</option>
                     <option>No</option>
@@ -503,6 +529,7 @@
               </select>
             </label>
           </div>
+
           <!-- Applications -->
           <h4
             class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
@@ -561,9 +588,7 @@
               <option>No</option>
             </select>
           </label>
-          <!-- </div> -->
 
-          <!-- <div> -->
           <!-- Data Protection -->
           <h4
             class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
@@ -612,6 +637,7 @@
             </select>
           </label>
         </div>
+
         <div class="flex-1 md:pl-6">
           <!-- Access Management -->
           <h4
@@ -836,11 +862,11 @@
             class="mt-10 bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
           /> -->
           <div
-            class="container py-10 px-10 mx-0 min-w-full flex flex-col items-center"
+            class="container py-5 px-5 mx-0 min-w-full flex flex-col items-center"
           >
             <button
               type="submit"
-              class="mt-10 bg-green-500 dark:bg-green-700 text-white px-5 py-4 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
+              class="mt-10 bg-green-500 dark:bg-green-700 text-white px-3 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
             >
               Generate
             </button>

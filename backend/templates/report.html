@@ -19,10 +19,7 @@
         <h2 class="text-lg font-semibold">
           Total Score: {{ final_percentage }}%
         </h2>
-        <!-- <h3 class="text-md font-medium mt-2">
-          Security Posture:
-          <span class="text-blue-400 font-semibold">{{ posture }}</span>
-        </h3> -->
+
         <h3 class="text-md font-medium mt-2">
           Security Posture:
           <span
@@ -40,6 +37,27 @@
         >
       </div>
 
+      <!-- 🎯 Pie chart and Bar chart side by side -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Pie Chart -->
+        <div class="flex justify-center">
+          <img
+            src="data:image/png;base64,{{ chart_base64 }}"
+            alt="Score Distribution Chart"
+            class="w-80 h-80 object-contain rounded-lg shadow-lg bg-gray-100 dark:bg-gray-700 p-2"
+          />
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="flex justify-center">
+          <img
+            src="data:image/png;base64,{{ bar_chart_base64 }}"
+            alt="Category Marks Bar Chart"
+            class="w-80 h-80 object-contain rounded-lg shadow-lg bg-gray-100 dark:bg-gray-700 p-2"
+          />
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         {% for category, score in scores.items() %}
         <div class="border p-4 rounded bg-gray-100 dark:bg-gray-700">
@@ -51,20 +69,6 @@
         </div>
         {% endfor %}
       </div>
-
-      <!-- <form action="/download" method="post" class="mt-8">
-        <input
-          type="hidden"
-          name="form_data"
-          value="{{ form | tojson | safe }}"
-        />
-        <button
-          type="submit"
-          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-4"
-        >
-          Download PDF Report
-        </button>
-      </form> -->
 
       <form action="/download" method="post" class="mt-8">
         <textarea name="form_data" class="hidden">{{ form | tojson }}</textarea>
