@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endpoint Security Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Application Security Assessment</title>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = localStorage.getItem("theme");
+        const icon = document.getElementById("theme-icon");
+
+        if (currentTheme === "dark") {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          icon.classList.replace("fa-moon", "fa-sun");
+        } else {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          icon.classList.replace("fa-sun", "fa-moon");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        const icon = document.getElementById("theme-icon");
+        if (savedTheme === "dark") {
+          document.documentElement.classList.add("dark");
+          icon.classList.replace("fa-sun", "fa-moon");
+        } else {
+          icon.classList.replace("fa-moon", "fa-sun");
+        }
+      });
+    </script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <img
+            src="{{ url_for('static', filename='logo1.png') }}"
+            alt="Logo"
+            class="w-50 h-20 mr-3 mt-5"
+          />
+          <!-- <h1
+            class="text-4xl font-bold text-green-600 dark:text-green-500 px-10"
+          >
+            Forvis Mazars
+          </h1> -->
+        </div>
+        <button
+          onclick="toggleTheme()"
+          class="w-12 h-12 flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-full shadow-md"
+        >
+          <i
+            id="theme-icon"
+            class="fa-solid fa-moon text-2xl text-black dark:text-white"
+          ></i>
+        </button>
+      </div>
+
+      <h2
+        class="text-xl mt-10 mb-5 text-green-600 dark:text-green-500 font-bold"
+      >
+        🛡️ Application Security
+      </h2>
+
+      <form
+        method="post"
+        class="bg-zinc-200 dark:bg-gray-800 p-6 rounded-md shadow-md flex flex-col md:flex-row md:divide-x md:divide-gray-300 md:dark:divide-gray-600"
+      >
+      <div class="flex-1 md:pr-6">
+        <h3
+        class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
+      >
+      🌐 Applications
+      </h3>
+        <label class="block mt-4">
+          <div class="mb-2">
+            Are your business applications hosted on secure platforms (AWS,
+            Azure, etc.)?
+          </div>
+          <select name="app_platforms" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Do you use a Web Application Firewall (WAF) for application
+            protection?
+          </div>
+          <select name="waf" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Is your application monitored using SIEM or log management tools?
+          </div>
+          <select name="siem" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Do you have protection against Advanced Persistent Threats (APT)?
+          </div>
+          <select name="apt_protection" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <h3
+        class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
+      >
+        🔐 Access Management
+      </h3>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Do employees only have access to the systems and data they need for work?
+          </div>
+          <select name="amt_access" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Is 2-step verification used for logging in to important systems?
+          </div>
+          <select name="amt_verify" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Is there a system to manage who can access different parts of your network?
+          </div>
+          <select name="amt_net" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Are shared passwords avoided in your company?
+          </div>
+          <select name="amt_pass" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <label class="block mt-4">
+          <div class="mb-2">
+            Is it easy to remove access when someone leaves the company or changes roles?
+          </div>
+          <select name="amt_roles" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+            <option value="" disabled selected>Select an option</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </label>
+
+        <h3
+        class="text-lg mt-10 text-green-600 dark:text-green-500 font-bold"
+      >
+      🛡 Data Protection
+      </h3>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Is sensitive information like customer or financial data encrypted (locked) when stored or sent?
+        </div>
+        <select name="amt_locked" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Do you have tools that prevent data from being accidentally shared or leaked?
+        </div>
+        <select name="amt_leaked" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Is your email system protected from spam and phishing?
+        </div>
+        <select name="amt_spam" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Is there a backup of important files in case of data loss or ransomware?
+        </div>
+        <select name="amt_backup" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Are your databases and file storage systems secured?
+        </div>
+        <select name="amt_db" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+      <label class="block mt-4">
+        <div class="mb-2">
+          Are employees trained to recognize suspicious links and attachments?
+        </div>
+        <select name="amt_train" required class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+          <option value="" disabled selected>Select an option</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </label>
+
+
+        <div
+          class="container py-6 px-4 mx-0 min-w-full flex flex-col items-center"
+        >
+          <button
+            type="submit"
+            class="mt-6 bg-green-500 dark:bg-green-700 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 dark:hover:bg-green-800"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <style>
+      .input-select {
+        @apply w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+      }
+    </style>
+  </body>
+</html>

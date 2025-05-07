@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security Operations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = localStorage.getItem("theme");
+        const icon = document.getElementById("theme-icon");
+
+        if (currentTheme === "dark") {
+          html.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          icon.classList.replace("fa-moon", "fa-sun");
+        } else {
+          html.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          icon.classList.replace("fa-sun", "fa-moon");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        const icon = document.getElementById("theme-icon");
+        if (savedTheme === "dark") {
+          document.documentElement.classList.add("dark");
+          icon.classList.replace("fa-sun", "fa-moon");
+        } else {
+          icon.classList.replace("fa-moon", "fa-sun");
+        }
+      });
+    </script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <img
+            src="{{ url_for('static', filename='logo1.png') }}"
+            alt="Logo"
+            class="w-50 h-20 mr-3 mt-5"
+          />
+          <!-- <h1
+            class="text-4xl font-bold text-green-600 dark:text-green-500 px-10"
+          >
+            Forvis Mazars
+          </h1> -->
+        </div>
+        <button
+          onclick="toggleTheme()"
+          class="w-12 h-12 flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-full shadow-md"
+        >
+          <i
+            id="theme-icon"
+            class="fa-solid fa-moon text-2xl text-black dark:text-white"
+          ></i>
+        </button>
+      </div>
+
+      <h2
+        class="text-xl mt-10 mb-5 text-green-600 dark:text-green-500 font-bold"
+      >
+        ⚙️ Security Operations
+      </h2>
+
+      <form
+        action="/generate_report"
+        method="post"
+        class="bg-zinc-200 dark:bg-gray-800 p-6 rounded-md shadow-md flex flex-col md:flex-row md:divide-x md:divide-gray-300 md:dark:divide-gray-600"
+      >
+        <div class="flex-1 md:pr-6">
+          <label class="block mt-4">
+            <div class="mb-2">
+              Do you keep a list of all computers and devices used in your
+              company?
+            </div>
+            <select
+              name="device_inventory"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Do you regularly check your systems for security problems or
+              unusual activity?
+            </div>
+            <select
+              name="system_monitoring"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Is someone always watching your systems for possible security
+              threats (day and night)?
+            </div>
+            <select
+              name="24_7_monitoring"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Do you have a clear plan for what to do if a cyberattack happens?
+            </div>
+            <select
+              name="incident_response_plan"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Are all software updates and security patches installed on time?
+            </div>
+            <select
+              name="patch_management"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Is there a set process to approve and track changes in your
+              systems?
+            </div>
+            <select
+              name="change_management"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Do you regularly check who has access to important systems or
+              data?
+            </div>
+            <select
+              name="access_review"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <label class="block mt-4">
+            <div class="mb-2">
+              Do you get outside help for cybersecurity (e.g., from a security
+              provider)?
+            </div>
+            <select
+              name="external_support"
+              required
+              class="input-select mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <div
+            class="container py-6 px-4 mx-0 min-w-full flex flex-col items-center"
+          >
+            <button
+              type="submit"
+              class="mt-6 bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded hover:bg-green-700 dark:hover:bg-green-800"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <style>
+      .input-select {
+        @apply w-full md:w-1/2 mt-2 p-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+      }
+    </style>
+  </body>
+</html>
